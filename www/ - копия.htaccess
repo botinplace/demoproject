@@ -1,0 +1,197 @@
+AddDefaultCharset UTF-8
+
+SetEnv BASE_URL testproject
+
+RewriteEngine on
+
+#Options All -Indexes
+#Options -Indexes
+
+<IfModule mod_mime.c>
+AddType font/otf .otf
+AddType font/ttf .ttf
+AddType font/woff .woff
+AddType font/woff2 .woff2
+AddType application/vnd.ms-fontobject .eot
+AddType text/x-component .htc
+</IfModule>
+
+
+ErrorDocument 403 /403
+
+#php_value post_max_size 20M
+
+<IfModule mod_rewrite.c>
+	
+RewriteEngine On
+
+# Если этого фото нет
+    #RewriteCond %{REQUEST_FILENAME} !-f
+    #RewriteRule \.(jpg|jpeg|png|gif)$ /img/noimg.jpg [NC,L]
+
+##### Редирект с www на без www
+RewriteCond %{HTTP_HOST} ^www\.(.+) [NC]
+RewriteRule ^(.*)$ http://%1/$1 [L,R=301]
+
+##### Редирект с http на https
+#RewriteCond %{HTTPS} off
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+##### Убрать слеш в конце
+    RewriteBase /mytesproject
+    RewriteCond %{REQUEST_URI} .+/$ [NC]
+    RewriteCond %{REQUEST_FILENAME} !-d
+	#RewriteCond %{REQUEST_URI} !^/admin/?$ [NC]  # игнорируем admin
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+ 
+	RewriteRule ^admin(/.*)?$ admin.php [L]
+
+	RewriteCond %{REQUEST_URI} !^/admin/
+    	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+    	RewriteRule ^(.*)$ index.php [L]
+
+	RewriteCond %{REQUEST_URI} ^/admin/
+	##RewriteCond %{REQUEST_FILENAME} !-f   #OPTIONAL: Remove '#' if you want existing files to display normally
+	##RewriteCond %{REQUEST_FILENAME} !-d   #OPTIONAL: Remove '#' if you want existing files to display normally
+	RewriteRule ^(.*)$ admin.php [L,QSA]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+	RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+	RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+	RewriteRule ^(.*)$ index.php [F,L]
+	
+# перенаправление запросов на скрипт вывода изображения с blur
+#RewriteRule ^[\/]?imgs/users_photo/([0-9]{1-5})/([0-9]{1-5})/(.*\.jpg)$ /img.php?path=$1&user_id=$2&src=$3 [L]
+# Выдача уменьшеных файлов
+#	RewriteCond %{QUERY_STRING} (^|&)min=true(&|$) [NC]
+#	RewriteRule ^[\/]?imgs\/users_photo\/([0-9]{1,5})\/([0-9]{1,5})\/(.*[\.jpg]|[\.png]) /img.php?path=$1&user_id=$2&src=$3&min=true [L]
+# Выдача обычных файлов
+#	RewriteCond %{QUERY_STRING} !(^|&)min=true(&|$) [NC]
+#	RewriteRule ^[\/]?imgs\/users_photo\/([0-9]{1,5})\/([0-9]{1,5})\/(.*[\.jpg]|[\.png]) /img.php?path=$1&user_id=$2&src=$3 [L]
+
+	#RewriteRule ^[\/]?imgs\/users_photo\/([0-9]?[0-9]?[0-9]?[0-9]?)\/([0-9]?[0-9]?[0-9]?[0-9]?)\/(.*\.jpg)$ /img.php?path=$1&user_id=$2&src=$3 [L]
+	#RewriteRule ^[\/]?imgs\/users_photo\/([0-9]{1,5})\/([0-9]{1,5})\/(.*[\.jpg]|[\.png])[[\?](.*)]?$ /img.php?path=$1&user_id=$2&src=$3&$4 [L]
+	#RewriteRule ^[\/]?imgs\/users_photo\/([0-9]{1,5})\/([0-9]{1,5})\/(.*[\.jpg]|[\.png])[\?].*]?$ /img.php?path=$1&user_id=$2&src=$3&{QUERY_STRING} [L]
+
+
+
+</IfModule>
+
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE image/x-icon
+    AddOutputFilterByType DEFLATE image/svg+xml svg svgz
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/x-font
+    AddOutputFilterByType DEFLATE application/x-font-truetype
+    AddOutputFilterByType DEFLATE application/x-font-ttf
+    AddOutputFilterByType DEFLATE application/x-font-otf
+    AddOutputFilterByType DEFLATE application/x-font-woff
+    AddOutputFilterByType DEFLATE application/x-font-woff2
+    AddOutputFilterByType DEFLATE application/x-font-opentype
+    AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+    AddOutputFilterByType DEFLATE font/ttf
+    AddOutputFilterByType DEFLATE font/otf
+    AddOutputFilterByType DEFLATE font/eot
+    AddOutputFilterByType DEFLATE font/woff
+    AddOutputFilterByType DEFLATE font/woff2
+    AddOutputFilterByType DEFLATE font/opentype
+
+  # For Olders Browsers Which Can't Handle Compression
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
+FileETag MTime Size
+<ifModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 5 seconds"
+	
+	 # Images
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"  
+
+  # Video
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType video/mpeg "access plus 1 year"
+
+  # CSS, JavaScript
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType application/x-javascript "access plus 1 year"
+  # Others
+  ExpiresByType application/pdf "access plus 1 month"
+  ExpiresByType application/x-shockwave-flash "access plus 1 month"
+  
+  # Web fonts
+
+    # Embedded OpenType (EOT)
+    ExpiresByType application/vnd.ms-fontobject         "access plus 1 year"
+    ExpiresByType font/eot                              "access plus 1 year"
+
+    # OpenType
+    ExpiresByType font/opentype                         "access plus 1 year"
+
+    # TrueType
+    ExpiresByType application/x-font-ttf                "access plus 1 year"
+
+    # Web Open Font Format (WOFF) 1.0
+    ExpiresByType application/font-woff                 "access plus 1 year"
+    ExpiresByType application/x-font-woff               "access plus 1 year"
+    ExpiresByType font/woff                             "access plus 1 year"
+
+    # Web Open Font Format (WOFF) 2.0
+    ExpiresByType application/font-woff2                "access plus 1 year"
+
+  
+  
+  
+  #кэшировать xml файлы на десять минут
+  ExpiresByType application/xhtml+xml "access plus 600 seconds"
+</ifModule>
+
+
+<IfModule mod_headers.c>
+    RewriteCond "%{HTTP:Accept-encoding}" "gzip"
+    RewriteCond "%{REQUEST_FILENAME}\.gz" -s
+    RewriteRule "^(.*)\.(css|js)"         "$1\.$2\.gz" [QSA]
+
+    RewriteRule "\.css\.gz$" "-" [T=text/css,E=no-gzip:1]
+    RewriteRule "\.js\.gz$"  "-" [T=text/javascript,E=no-gzip:1]
+
+<FilesMatch "\.(js|css|xml|gz)$">
+#      Header append Content-Encoding gzip
+#      Header append Vary: Accept-Encoding
+ </FilesMatch>
+</IfModule>
+
+<FilesMatch "\.(css)$">
+    Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>
+
+#<Files ~ "\.(gif|jp[eg]|png)$">
+#Header append x-robots-tag "noindex"
+#</Files>
+
+<FilesMatch ".(jpg|jpeg|png|gif|ico|svg|ttf|eot|woff|woff2)$">
+Header set Cache-Control "max-age=31536000, public"
+#Header append x-robots-tag "noindex"
+</FilesMatch>

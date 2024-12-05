@@ -1,0 +1,18 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "MainApp\\": "App/main_app/",
+            "AdminApp\\": "App/admin_app/"
+        }
+    },
+    "require": {
+        "botinplace/tc4u": "main"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/botinplace/tc4u"
+        }
+    ]
+}

@@ -1,0 +1,560 @@
+<div class="container">
+			<div class="main">
+
+<div class="left-sidebar">
+<div class="logo-wrapper" >
+		<span href="/drp" class="logo auth_b" style=" display: flex;    align-items: center;    gap: 10px;">
+			<img src="{{base_url}}/img/pzlogo.png" alt="pz дрп">
+			<div style="font-size: 27px;  font-weight: bold;"><span>24.032_</span><span>ДРП</span></div>
+		</span>	
+		{{authorconentblock}}
+		{{mytasks_b|html}}
+{{exit_button|html}}
+</div>
+
+
+			
+			<li class="forone"><div style="    padding: 10px 10px 10px 15px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: rgb(72 83 125 / 80%);
+    color: white;
+"><i style="background: #ab1e1e;"></i>
+<div style="display: flex; align-items: center; justify-content: space-between;">
+Проблемы
+{{completed_problems_button|html}}
+</div>
+<span>Актуальные проблемы на {{currentdate}}:
+<!-- <a href="{{base_url}}?completed_problems=true" style=" display: inline-flex; color: #b7b7b7; font-weight: 500; font-size: 14px; ">Показать Решённые</a> -->
+</span>
+<div style="
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap: 10px 2px;
+    flex-wrap: wrap;
+"><form class="nofetch" method="GET">
+<!-- min="2023-03-01" max="2024-08-08" value="2024-08-08" -->
+<input type="month" value="{{problems_month}}" name="problems_month">
+<button>Найти</button>
+</form>
+
+
+<div class="checkbox">
+    <input class="custom-checkbox" checked="" type="checkbox" id="new-points" name="new-points" value="true">
+    <label data-points-count="{{new-points}}" data-mytitle="Новые" for="new-points">Новые</label>
+</div>
+
+<div class="checkbox">
+    <input class="custom-checkbox" checked="" type="checkbox" id="waiting-points" name="waiting-points" value="true">
+    <label data-points-count="{{waiting-points}}" data-mytitle="Назначенные" for="waiting-points">Назначенные</label>
+</div>
+
+<div class="checkbox">
+    <input class="custom-checkbox" checked="" type="checkbox" id="repair-points" name="repair-points" value="true">
+    <label data-points-count="{{repair-points}}" data-mytitle="В Работе" for="repair-points">В Работе</label>
+</div>
+
+<!-- для фильтра по реверсии -->
+ <div class="checkbox sort-form">
+    <input class="custom-checkbox" checked="" type="checkbox" id="sort-from" name="sort-from" value="true">
+    <label class="sort-form" for="sort-from">Дата</label>
+  </div>
+
+<!-- ГРУППЕРОВКА ПО СТАТУСАМ -->
+<!--
+ <div class="checkbox sort-form">
+    <input class="custom-checkbox" checked="" type="checkbox" id="sort-territory-from" name="sort-territory-from" value="true">
+    <label class="sort-form" for="sort-territory-from">Территория</label>
+  </div>
+-->
+
+{{problem_locations_header|html}}
+
+{{problem_categories_header|html}}
+
+<!-- ГРУППЕРОВКА ПО СТАТУСАМ -->
+<!--
+ <div class="checkbox sort-form">
+    <input class="custom-checkbox" checked="" type="checkbox" id="sort-category-from" name="sort-category-from" value="true">
+    <label class="sort-form" for="sort-category-from">Категория</label>
+  </div>
+  -->
+  
+<!-- ГРУППЕРОВКА ПО СТАТУСАМ -->
+ <div class="checkbox sort-form">
+    <input class="custom-checkbox" checked="" type="checkbox" id="sort-status-from" name="sort-status-from" value="true">
+    <label class="sort-form" for="sort-status-from">Статус</label>
+  </div>
+ 
+ <input type="search" placeholder="Поиск проблем из списка отображаемых" id="problem_search" />
+  
+</div>
+<a href="http://192.168.6.10/pzelectrocars" style="
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    background: red;
+    z-index: 9999;
+    padding: 5px;
+    border-radius: 0 2.5px 0 5px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 1px solid #3c3c3c;
+    display: none;
+">X</a></div></li>
+
+
+			<!-- style="background: rgb(72 83 125 / 80%);" -->
+<ul id="coords-ul" >
+
+
+
+
+<!-- {{ authorconentblock|html }} -->				
+				
+				
+				
+				</ul>
+</div>			
+	
+				<div class="mall" style="transform:scale(1);align-items:center;justify-content:center;">
+				
+				
+				<div style="
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 7.5px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    font-weight: 500;
+">
+    <div style="
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    justify-content: flex-start;
+"><img src="imgs/ico/problem_point2.svg" style="
+    height: 35px;
+    margin: 0;
+"> Новая</div>
+    <div style="
+    display: flex;
+    align-items: center;
+    gap: 10px;
+"><img src="imgs/ico/waiting_point01.svg" style="
+    height: 35px;
+    margin: 0;
+"> Назначена</div>
+    <div style="
+    display: flex;
+    align-items: center;
+    gap: 10px;
+"><img src="imgs/ico/repair_point01.svg" style="
+    height: 35px;
+    margin: 0;
+"> В Работе</div>
+</div>
+				
+				
+				<div class="modal-wrapper" ><div id="modal" style="align-items: center; justify-content: center; border-radius: 5px; flex-direction: column; background: rgba(72, 83, 125, 0.8); box-shadow: rgb(0, 0, 0) 0px 0px 1px; border-color: rgb(64, 64, 64); pointer-events: painted; position: relative; max-width: 720px; width: 100%; margin: 0px auto; inset: auto 0px; z-index: 999999; backdrop-filter: blur(4px); color: rgb(255, 255, 255); min-height: 500px; height: auto; display: flex;padding:20px; display:none;position:absolute;" >
+<button id="close-modal" class="modal-close-button" >Закрыть</button>
+<h2 class="form_h2">Создание</h2>
+<style>
+        .upload-form { max-width: 300px; margin: 50px auto; }
+        .message { margin-top: 20px; }
+        #preview { 
+		max-width: 100%;
+    margin-top: 10px;
+    display: flex;
+    width: 100%;
+    height: 400px;
+    overflow: auto;
+    flex-wrap: wrap;
+		}
+</style>
+<form id="uploadForm" class="form-wrapper" method="post" action="{{base_url}}/add_problem" enctype="multipart/form-data" style="
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 50px;
+">
+
+<div class="form-row">
+	<label for="problem_title_input">Название проблемы</label>
+	<input name="problem_title" id="problem_title_input" required type="text" placeholder="Название проблемы">
+</div>
+
+<div class="form-row">
+	<label for="problem_description_input">Описание проблемы</label>
+	<textarea id="problem_description_input" placeholder="Описание проблемы" name="problem_description" style="height: 62px; overflow-y: hidden;"></textarea>
+	</div>
+
+<div class="form-row">{{problem_locations1|html}}</div>
+
+<div class="form-row"><label for="problem_categories">Категория</label>{{problem_categories|html}}</div>
+
+<div class="form-row drop-area-block">
+    <div class="drop-area" id="dropArea1" data-file-input="fileInput">
+        Перетащите фото сюда, или нажмите, чтобы выбрать файлы
+    </div>
+    <input type="file" name="afile[]" id="fileInput" multiple accept="image/*">
+</div>
+
+<input name="csrf_token" type="hidden" value="bdf49c3c3882102fc017ffb661108c63a836d065888a4093994398cc55c2ea2f">
+<input id="problem_coord_x" type="hidden" name="problem_coord_x" >
+<input id="problem_coord_y" type="hidden" name="problem_coord_y" >
+
+<div class="form-row"><button class="sympathy" type="submit" style="
+    background: #129f12;
+    border: 1px solid #353535;
+    color: white;
+    border-radius: 5px;
+">Сохранить</button></div>
+
+</form>
+
+</div>
+
+<!-- -->
+
+<div id="modal2" style="align-items: center; justify-content: center; border-radius: 5px; flex-direction: column; background: rgba(72, 83, 125, 0.8); box-shadow: rgb(0, 0, 0) 0px 0px 1px; border-color: rgb(64, 64, 64); pointer-events: painted; position: relative; max-width: 720px; width: 100%; margin: 0px auto; inset: auto 0px; z-index: 999999; backdrop-filter: blur(4px); color: rgb(255, 255, 255); min-height: 500px; height: auto; display: flex;padding:20px;display:none;position:absolute;" >
+<button id="close-modal2" class="modal-close-button">Закрыть</button>
+<h2 class="form_h2">Карточка проблемы</h2>
+
+ <div id="modal-content-wrapper" style="max-height: 91vh; overflow: auto; max-width: 100%;width: 100%;/*height: 91vh;*/overflow-y: scroll;"> 
+<form id="uploadForm2" class="form-wrapper" method="post" action="{{base_url}}/edit_problem" style="
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 50px 0;
+">
+
+<div class="form-row">
+	<label for="problem_title_input2">Название проблемы</label>
+	<input name="problem_title" readonly id="problem_title_input2" {{readonly_atr}} required type="text" placeholder="Название проблемы">
+</div>
+
+<div class="form-row">
+	<label for="problem_description_input2">Описание проблемы</label>
+	<textarea id="problem_description_input2" readonly {{readonly_atr}} placeholder="Описание проблемы" name="problem_description" style="height: 62px; overflow-y: hidden;"></textarea>
+</div>
+
+<div class="form-row">
+	<label for="problem_location">Местоположение</label>
+	{{problem_locations|html}}
+</div>
+
+<div class="form-row">
+	<label for="problem_categories2">Категория</label>
+	{{problem_categories2|html}}
+</div>
+
+<div class="form-row">
+	<label for="problem_status_text">Статус</label>
+	<input id="problem_status_text" type="text" value="" readonly="">
+	<select disabled id="problem_status" placeholder="Статус проблемы" name="problem_status" style="display:none;" >
+		<option value="1" >Новая</option>
+		<option value="2" >Назначена</option>
+		<option value="3" >В Работе</option>
+		<option value="4" >Решена</option>
+		<!-- <option>Удалена</option> -->
+	</select>
+</div>
+
+<div id="find-user">
+	<div class="form-row">
+		<label for="responsible_user">Ответственный</label>
+		<input id="responsible_user" readonly name="responsible_user" oninput="FindUsersInput(this)" type="text" placeholder="Ответственный" value="">
+		<input name="responsible_user_id" type="hidden" value="">
+		<input name="responsible_user_name" type="hidden" value="">
+		<input name="responsible_user_email" type="hidden" value="">
+	</div>
+	{{finduser_input|html}}
+</div>
+
+<input name="csrf_token" type="hidden" value="bdf49c3c3882102fc017ffb661108c63a836d065888a4093994398cc55c2ea2f">
+<input type="hidden" name="id" id="problem_id_input" value="0" />
+<input id="problem_coord_x2" type="hidden" name="problem_coord_x" >
+<input id="problem_coord_y2" type="hidden" name="problem_coord_y" >
+
+{{edit_problem_file|html}}
+
+<div class="form-row">{{edit_problem_button | html}}</div>
+
+</form>
+<div class="form-row" id="in_waiting_buttons" style="align-items: center; margin-top: -10px; position: relative; padding-top: 90px; margin: 0px 50px 10px; display: flex; gap: 20px;">
+	<div style="flex: 1;" >
+		<form method="post" action="{{base_url}}/accept_task" style="flex-direction: column; width: 100%; margin:0;">
+			
+		<div style="position: absolute;    top: 0;    left: 0;    display: flex;    width: 100%;">
+			<label for="plan_date">Плановый срок устранения проблемы</label>
+			<input type="date" required class="formdate" name="plan_date" id="plan_date">
+		</div>
+		
+		<div id="take-task" class="hidden">
+			<input type="hidden" id="accept_object_id1" name="task_problem_id" value="0">
+			<input type="hidden" id="accept_object_id2" name="task_id" value="0">
+			<button class="sympathy" style="background: #129f12; border: 1px solid #353535; color: white; border-radius: 5px;" >Взять в работу</button>
+		</div>
+		</form>
+	</div>
+	{{ cancel_problem_button | html}}
+</div>
+
+	<div id="end-task" style="flex: 1;" class="form-row hidden" >
+		<form method="post" action="{{base_url}}/end_task" style="flex-direction: column; width: 100%; padding: 0 50px;margin:0;">
+			<input type="hidden" id="end_object_id1" name="task_problem_id" value="0">
+			<input type="hidden" id="end_object_id2" name="task_id" value="0">
+			<button class="sympathy" style="background: #129f12; border: 1px solid #353535; color: white; border-radius: 5px;" >Завершить</button>
+		</form>
+	</div>
+
+{{del_problem_button|html}}
+
+
+<div id="modal-img-wrapper" class="form-row" style="
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+	justify-content:center;
+">
+    <img src="" alt="">     
+</div>
+
+<!-- close height fiexer-->
+</div>
+
+
+</div>
+
+
+<div id="modal3" style="align-items: center; justify-content: center; border-radius: 5px; flex-direction: column; background: rgba(72, 83, 125, 0.8); box-shadow: rgb(0, 0, 0) 0px 0px 1px; border-color: rgb(64, 64, 64); pointer-events: painted; position: relative; max-width: 720px; width: 100%; margin: 0px auto; inset: auto 0px; z-index: 999999; backdrop-filter: blur(4px); color: rgb(255, 255, 255); min-height: 500px; height: auto; display: flex;padding:20px;display:none;position:absolute;" >
+	<button id="close-modal3" class="modal-close-button">Закрыть</button>
+	<h2 class="form_h2">Мои задачи</h2>
+
+	<div id="modal-content-wrapper" style="max-height: 91vh; overflow: auto; max-width: 100%;width: 100%;/*height: 91vh;*/overflow-y: scroll;min-height: 400px;"> 
+		
+	</div>
+ </div>
+
+<!-- -->
+
+</div>
+
+				
+				
+ 
+<svg data-territory-name="За территорией" class="level level--3" height="100%" style="top:0;" aria-label="Level 3" id="pzmap-img" viewBox="825 0 850 870" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com" preserveAspectRatio="xMinYMin slice">
+	<g id="svg_map_wrapper">
+		<polygon data-territory-name="Территория завода (Улица)" style="stroke: rgb(0, 0, 0); fill: rgb(221, 221, 221); stroke-width: 2px; stroke-opacity: 0.05;" points="1617.515 535.376 1489.739 177.512 1167.633 280.449 1157.647 262.487 1130.361 274.232 1111.06 280.449 1120.381 306.703 1118.381 310.847 1122.373 349.536 1114.388 348.845 1105.073 312.92 1054.493 326.738 1064.479 366.807 1039.849 376.478 1030.534 372.333 993.933 225.181 936.031 235.545 933.373 233.472 879.464 246.598 918.73 437.274 948.01 686.674 1130.166 663.625 1125.942 603.359 1136.995 601.916 1131.993 554.589 1184.732 548.559 1182.59 509.19 1198.898 504.55 1190.98 465.115 1199.518 463.348 1255.8 672.921 1620.844 536.756"></polygon>
+	<!-- fordel-->
+<g>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1455.407" y1="264.005" x2="1320.15" y2="304.873"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1297.68" y1="247.344" x2="1308.794" y2="289.174"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1321.793" y1="304.383" x2="1268.563" y2="325.884"></line>
+  <path style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255); transform-box: fill-box; transform-origin: 50% 50%;" d="M 1257.187 399.868 C 1257.187 399.868 1258.932 321.108 1269.76 323.596" transform="matrix(-1, 0, 0, -1, -0.000059, -0.000002)"></path>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1189.257" y1="424.273" x2="1295.124" y2="389.181"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1293.57" y1="388.958" x2="1304.88" y2="397.19"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1304.046" y1="395.855" x2="1325.112" y2="473.678"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1324.482" y1="472.921" x2="1332.863" y2="479.605"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1342.958" y1="480.175" x2="1499.452" y2="442.905"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1212.548" y1="414.747" x2="1262.771" y2="605.42"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="981.212" y1="657.838" x2="971.196" y2="569.075"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="971.205" y1="569.631" x2="973.968" y2="562.273"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="973.11" y1="562.963" x2="1029.858" y2="554.427"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="937.878" y1="434.252" x2="964.391" y2="430.352"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="964.391" y1="430.352" x2="988.034" y2="429.153"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="987.598" y1="429.329" x2="1022.853" y2="416.513"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1023.18" y1="414.52" x2="1029.086" y2="553.233"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1028.356" y1="554.987" x2="1034.538" y2="565.011"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1033.071" y1="564.348" x2="1116.596" y2="563.539"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1115.59" y1="563.543" x2="1123.314" y2="650.914"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1030.07" y1="617.655" x2="1043.245" y2="599.265"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1042.686" y1="599.89" x2="1066.855" y2="582.827"></line>
+  <path style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" d="M 1066.037 584.226 C 1081.335 565.544 1069.448 521.598 1069.448 521.598"></path>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1069.193" y1="520.396" x2="1059.203" y2="446.759"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1059.736" y1="448.121" x2="1051.331" y2="440.101"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1052.746" y1="440.618" x2="1025.679" y2="444.329"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1024.256" y1="415.472" x2="995.128" y2="387.823"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="995.072" y1="388.079" x2="961.841" y2="311.672"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1067.512" y1="520.531" x2="1168.198" y2="510.712"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1167.294" y1="511.088" x2="1176.189" y2="503.925"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1175.569" y1="504.824" x2="1194.254" y2="452.101"></line>
+  <path style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" d="M 1143.725 512.245 C 1148.225 514.827 1115.56 566.542 1110.021 563.363"></path>
+  <path style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" d="M 1132.351 274.766 C 1136.582 271.821 1196.075 419.882 1189.776 424.267"></path>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1189.902" y1="421.922" x2="1194.825" y2="452.803"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1273.989" y1="296.782" x2="1310.042" y2="287.238"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255); transform-box: fill-box; transform-origin: 50% 50%;" x1="1269.592" y1="324.788" x2="1275.336" y2="295.465" transform="matrix(-1, 0, 0, -1, -0.000146, -0.000006)"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1312.958" y1="295.007" x2="1314.376" y2="307.003"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1307.798" y1="286.155" x2="1312.921" y2="294.936"></line>
+  <path style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" d="M 1453.535 236.451 C 1453.549 236.44 1476.622 249.056 1455.473 265.673"></path>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1386.559" y1="255.267" x2="1391.978" y2="282.548"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1384.622" y1="254.3" x2="1451.664" y2="236.23"></line>
+  <path style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" d="M 1444.537 196.379 C 1444.782 196.257 1458.662 234.206 1453.565 236.754"></path>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1379.381" y1="229.52" x2="1386.51" y2="255.953"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255); transform-box: fill-box; transform-origin: 50% 50%;" x1="1381.855" y1="210.207" x2="1432.007" y2="190.479" transform="matrix(-1, 0, 0, -1, 0.000173, -0.000004)"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255); transform-box: fill-box; transform-origin: 50% 50%;" x1="1379.333" y1="230.369" x2="1382.81" y2="208.756" transform="matrix(-1, 0, 0, -1, -0.000021, -0.000002)"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1440.775" y1="189.994" x2="1444.943" y2="197.388"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1431.323" y1="190.599" x2="1442.324" y2="190.717"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1413.566" y1="276.621" x2="1454.405" y2="454.558"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1262.379" y1="603.175" x2="1265.549" y2="612.05"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1263.476" y1="611.632" x2="1338.701" y2="596.591"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1338.27" y1="596.175" x2="1358.974" y2="601.258"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1358.272" y1="601.132" x2="1383.085" y2="592.801"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1382.655" y1="593.26" x2="1390.755" y2="584.052"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1390.052" y1="584.509" x2="1460.193" y2="544.226"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1331.919" y1="479.468" x2="1343.58" y2="480.102"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1469.213" y1="451.674" x2="1491.492" y2="500.709"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1498.964" y1="439.181" x2="1510.914" y2="473.36"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255); transform-box: fill-box; transform-origin: 50% 50%;" x1="1499.016" y1="439.799" x2="1499.737" y2="401.822" transform="matrix(-1, 0, 0, -1, 0.000107, 0.000026)"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1491.685" y1="366.525" x2="1499.784" y2="402.415"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1501.274" y1="348.113" x2="1528.676" y2="380.31"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255); transform-box: fill-box; transform-origin: 50% 50%;" x1="1496.248" y1="349.964" x2="1524.199" y2="342.974" transform="matrix(-1, 0, 0, -1, -0.000012, -0.000016)"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1495.241" y1="311.2" x2="1504.996" y2="347.412"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1490.867" y1="358.71" x2="1492.027" y2="368.427"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255); transform-origin: 1494.09px 354.578px;" x1="1497.503" y1="349.075" x2="1490.67" y2="360.08"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255); transform-box: fill-box; transform-origin: 50% 50%;" x1="1512.503" y1="412.575" x2="1528.875" y2="390.748" transform="matrix(-1, 0, 0, -1, 0.000185, -0.000031)"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1528.422" y1="379.189" x2="1528.526" y2="391.958"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255); transform-box: fill-box; transform-origin: 50% 50%;" x1="1500.321" y1="419.413" x2="1513.039" y2="412.103" transform="matrix(-1, 0, 0, -1, 0.000109, 0.000012)"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255); transform-origin: 1495.61px 305.416px;" x1="1495.773" y1="298.361" x2="1495.422" y2="312.472"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1473.554" y1="279.927" x2="1485.983" y2="278.649"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1489.681" y1="289.59" x2="1495.898" y2="299.247"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1484.306" y1="277.637" x2="1489.687" y2="289.966"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1555.726" y1="505.491" x2="1561.931" y2="501.049"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1490.892" y1="499.739" x2="1503.056" y2="506.73"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1550.369" y1="508.483" x2="1556.104" y2="504.791"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1537.222" y1="513.907" x2="1551.012" y2="507.957"></line>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1502.136" y1="505.929" x2="1515.57" y2="510.505"></line>
+  <path style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" d="M 1526.796 512.135 C 1526.769 512.156 1534.79 516.302 1538.272 513.666"></path>
+  <line style="paint-order: stroke; fill: rgba(255, 255, 255, 0); stroke-width: 3px; stroke: rgb(255, 255, 255);" x1="1515.298" y1="510.388" x2="1528.25" y2="512.692"></line>
+  <path style="stroke: rgb(255, 255, 255); stroke-width: 3px; fill: rgba(216, 216, 216, 0);" d="M 1450.522 456.283 C 1456.601 457.941 1471.453 546.428 1461.23 543.64"></path>
+</g>
+
+<!-- endfordel -->
+
+    <g class="buildings" >
+      <polyline  points="1055.306 360.521 1053.873 354.927 1056.911 354.094 1055.994 349.63 1049.688 351.297 1048.026 344.513 1050.09 343.799 1049.803 342.371 1050.376 342.074 1049.631 338.801 1046.592 339.515 1045.045 332.73 1051.121 331.183 1050.319 327.315 1048.14 327.792 1046.708 321.424 1030.599 325.589 1034.497 342.49 1033.351 342.788 1034.382 347.608 1035.816 347.369 1040.229 364.746 1055.65 360.283"></polyline>
+      <polyline  points="1478.084 202.058 1485.86 225 1501.002 219.795 1493.329 196.11 1477.982 202.164"></polyline>
+      <polyline  points="1085.837 322.28 1093.13 353.64 1111.463 349.098 1104.067 317.63 1085.629 322.389"></polyline>
+      <polyline  points="1044.3 566.645 1042.312 583.107 1034.1 582.138 1035.967 565.864 1044.313 566.638"></polyline>
+      <polyline  points="1023.681 579.289 1025.508 589.829 1037.489 587.404 1035.357 577.075 1023.782 579.394 1023.782 579.5"></polyline>
+      <polyline  points="1533.377 354.545 1540.13 373.238 1556.91 366.971 1549.646 348.172 1533.275 354.65"></polyline>
+      <polyline  points="1520.486 303.649 1530.001 330.521 1541.87 326.591 1531.945 299.082 1520.075 303.438"></polyline>
+      <polyline  points="1495.679 265.19 1504.17 296.521 1522.484 291.211 1513.482 259.56 1495.535 264.999"></polyline>
+      <polyline  points="1226.567 314.638 1228.146 321.922 1261.475 312.817 1260.51 309.357 1260.773 308.903 1260.072 305.716 1226.304 314.821"></polyline>
+      <polyline  points="1146.722 518.046 1147.558 525.773 1167.836 523.669 1166.711 515.613 1147.152 517.985"></polyline>
+      <polyline  points="1073.154 529.301 1073.704 539.194 1131.441 530.773 1130.525 521.301 1072.97 529.512"></polyline>
+      <polyline  points="1272.42 305.825 1274.728 316.8 1306.083 307.843 1304.017 297.498 1272.297 305.825"></polyline>
+      <polyline  points="1405.41 263.585 1407.676 274.015 1459.468 260.941 1455.893 244.635 1409.941 256.681 1411.071 261.969 1405.133 263.585"></polyline>
+      <polyline  points="1400.885 244.862 1452.112 232.082 1448.291 215.482 1397.206 227.527 1400.885 244.862"></polyline>
+      <polyline  points="1522.109 555.311 1523.247 560.926 1531.293 558.857 1529.51 553.095 1522.109 555.311"></polyline>
+      <polyline  points="1471.823 556.78 1478.798 579.978 1488.904 577.466 1484.491 557.815 1483.495 558.11 1482.214 554.121 1471.806 556.767"></polyline>
+      <polyline  points="1488.378 554.537 1493.527 573.173 1505.911 570.366 1505.911 569.775 1511.888 567.411 1505.768 542.884 1496.089 545.396 1497.37 549.828 1502.21 548.793 1502.495 548.203 1504.345 554.704 1500.359 557.954 1496.659 558.989 1493.954 556.034 1493.812 552.783 1488.351 554.539"></polyline>
+      <polyline data-territory-name="Цех №16" data-territory-id="19"  points="1504.741 425.858 1522.249 477.603 1507.831 481.238 1511.539 496.848 1511.606 496.755 1512.959 501.032 1519.366 499.414 1521.281 505.302 1525.806 504.055 1526.987 508.822 1551.086 501.348 1547.056 492.473 1550.674 490.86 1524.721 417.518 1529.563 496.204 1527.919 501.22 1524.711 496.856 1529.459 496.223 1529.524 496.178 1524.927 417.305 1504.782 425.82"></polyline>
+      <polyline  points="1560.348 388.738 1587.332 463.149 1583.213 464.859 1591.657 486.347 1598.867 483.891 1603.285 494.761 1593.367 498.338 1583.24 502.081 1564.436 508.904 1560.83 497.894 1577.838 492.325 1575.959 486.721 1557.877 492.443 1525.126 402.85 1560.348 388.738"></polyline>
+      <polyline  points="1290.728 251.701 1302.152 288.665 1282.585 294.973 1271.283 258.514 1290.849 252.08"></polyline>
+      <polyline  points="1382.126 486.149 1384.03 493.722 1409.921 486.959 1408.083 478.809 1382.139 486.154"></polyline>
+      <polyline  points="1471.61 534.669 1473.955 541.793 1498.578 535.292 1502.707 534.258 1532.597 530.712 1532.312 523.177 1502.707 526.87 1471.61 534.65"></polyline>
+      <polyline  points="996.734 348.768 1004.565 379.659 995.69 381.826 986.946 351.207 996.734 348.633"></polyline>
+      <polyline  points="1046.011 610.599 1046.011 635.204 1049.482 635.204 1049.33 642.259 1035.373 642.179 1035.933 610.212 1046.011 610.406"></polyline>
+      <polyline  points="1088.682 658.814 1089.149 666.753 1122.351 663.945 1121.604 655.716 1088.59 658.717"></polyline>
+      <polyline  points="1271.064 343.87 1275.825 365.461 1283.844 363.379 1285.347 370.143 1361.275 350.633 1354.509 322.019 1270.813 343.609"></polyline>
+      <polyline  points="1374.484 233.405 1387.354 285.406 1317.072 303.351 1305.085 251.874 1374.863 233.536"></polyline>
+      <path  data-territory-name="Цех №14" d="M 1381.879 323.207 L 1407.579 451.972 L 1420.196 448.071 L 1421.597 454.834 L 1442.053 450.436 L 1441.118 444.239 L 1445.843 443.447 C 1443.128 435.987 1440.798 422.081 1440.798 422.081 L 1431.62 423.949 L 1415.437 343.332 L 1421.563 341.914 L 1416.018 315.641 L 1381.645 323.467"></path>
+      
+	  <polyline  data-territory-name="Цех №11" data-territory-id="16" points="1430.585 285.404 1465.786 445.534 1490.844 439.551 1480.821 397.93 1490.844 396.11 1480.57 350.847 1470.797 352.668 1468.041 340.962 1491.846 335.239 1480.821 288.415 1459.77 293.098 1457.015 279.31 1430.452 285.554"></polyline>
+	  
+      <polyline  data-territory-name="Цех №31(2)" points="1319.246 440.786 1325.009 466.279 1379.387 452.752 1380.89 457.695 1392.417 454.833 1386.153 432.982 1370.365 437.665 1362.096 404.108 1339.794 410.611 1343.052 425.438 1352.824 423.097 1356.583 438.445 1339.292 443.127 1336.536 435.063 1319.246 440.786"></polyline>
+      <polyline  data-territory-name="Цех №31" data-territory-id="3" points="925.054 411.786 928.875 425.572 963.257 416.507 966.168 427.271 985.633 421.795 982.904 410.087 992.364 407.443 989.089 394.412 925.054 412.164"></polyline>
+      <polyline  data-territory-name="Цех №33" data-territory-id="2" points="882.608 249.912 903.642 347.527 955.92 334.17 934.385 237.161 882.649 250.235"></polyline>
+      <polyline  data-territory-name="Цех №8" data-territory-id="7" points="966.853 570.9 1017.058 563.538 1028.629 654.597 1052.331 651.303 1055.318 667.384 975.625 679.009 973.572 663.897 978.611 663.115 966.853 570.707"></polyline>
+      <polyline  points="1117.486 555.84 1121.101 595.862 1137.365 594.611 1134.152 553.756 1117.189 555.694"></polyline>
+      <polyline  data-territory-name="Цех №1" data-territory-id="8" points="1111.409 604.164 1107.49 603.777 1105.437 572.197 1052.433 576.072 1053.179 592.152 1058.965 591.959 1059.338 600.483 1055.233 600.871 1057.845 655.7 1114.955 651.632 1111.223 603.584"></polyline>
+      <polyline  points="991.389 230.249 963.044 237.363 965.159 245.62 972.52 243.951 974.806 254.315 964.229 257.126 963.975 256.512 960.167 257.566 968.544 294.544 982.928 291.031 985.213 300.332 985.805 300.156 993.674 331.602 1000.443 329.757 1002.474 338.843 1015.166 335.681 1001.966 280.403 1002.643 279.876 992.489 237.627 993.589 237.276 991.329 229.847"></polyline>
+      <polyline  points="914.432 371.364 918.895 389.123 922.986 388.094 924.474 394.271 941.706 389.895 942.698 394.271 952.616 391.955 950.013 381.659 949.145 382.045 948.773 379.729 969.601 374.323 965.51 357.336 914.308 371.364"></polyline>
+      <polyline data-territory-name="Цех №9" data-territory-id="4" points="1012.8 546.929 1001.51 451.443 1004.665 451.098 1002.174 430.587 927.791 440.412 941.24 557.787 942.568 557.787 956.183 677.039 969.632 674.799 955.685 556.217 1012.966 547.159"></polyline>
+      
+		<polyline  data-territory-name="Цех №26" data-territory-id="10" points="1457.521 589.604 1440.327 523.559 1447.343 518.249 1446.998 512.613 1443.262 508.24 1439.72 497.093 1433.634 497.647 1430.561 488.165 1324.992 514.277 1295.112 407.767 1236.685 423.39 1250.474 480.945 1246.151 482.253 1250.691 499.702 1255.457 498.511 1273.382 581.405 1265.87 584.151 1268.747 596.441 1287.552 591.899 1288.23 592.323 1314.566 584.702 1316.299 584.299 1343.051 581.908 1344.91 580.43 1372.863 570.017 1401.874 561.032 1402.029 561.026 1407.925 553.405 1414.379 576.564 1419.127 575.293 1419.156 575.27 1424.584 573.564 1427.046 581.647 1409.635 586.226 1408.346 581.944 1375.546 596.782 1374.172 591.673 1352.972 596.624 1350.963 597.86 1345.368 600.325 1343.31 603.508 1338.575 604.496 1336.145 600.216 1331.654 597.436 1311.178 602.014 1312.438 609.535 1294.464 614.709 1294.797 619.327 1274.253 625.213 1271.585 615.76 1256.133 620.012 1253.215 611.17 1221.398 488.866 1216.042 490.501 1214.153 480.364 1217.933 477.748 1213.207 460.743 1216.358 458.781 1211.947 444.719 1209.113 444.392 1206.502 431.703 1196.332 435.888 1206.348 482.784 1210.373 481.999 1212.573 490.551 1207.537 492.79 1236.519 607.573 1241.559 608.227 1244.394 617.057 1239.984 618.038 1248.953 647.373 1260.775 644.199 1263.425 654.818 1280.288 650.723 1277.502 640.301 1299.463 634.424 1307.768 632.462 1342.549 622.421 1339.353 608.837 1345.463 607.167 1348.421 620.219 1367.104 615.604 1380.013 612.009 1409.01 603.615 1409.588 602.74 1431.446 597.176 1435.61 609.208 1450.715 604.879 1447.138 593.253 1457.643 589.675"></polyline>
+	  
+      <polyline data-territory-name="Цех №24" data-territory-id="5" points="1026.777 456.381 1034.069 525.326 1050.387 523.171 1043.095 454.031 1026.603 456.577"></polyline>
+      <polyline data-territory-name="Цех №7" data-territory-id="6"  points="1063.116 398.165 1129.23 389.726 1138.596 499.842 1083.684 507.075 1083.134 505.669 1072.849 506.674 1063.081 397.802"></polyline>
+      <polyline points="1220.689 406.963 1216.711 390.789 1221.684 389.24 1207.596 335.903 1202.291 337.451 1198.48 321.966 1183.894 325.923 1177.927 301.147 1163.673 304.932 1192.513 414.534 1221.021 407.135"></polyline>
+    </g>
+	
+	
+	
+<!-- /// -->
+
+<g id="problems_points"></g> 
+   <g id="map_workshops_titles" transform="matrix(0.9944, 0, 0, 1.003019, 3.806666, 6.612871)">
+    <text x="1295" y="345" class="small">34 цех</text>
+	<text x="1335" y="445" class="small">31 цех</text>
+	<text x="1270" y="520" class="small">26 цех</text>
+	<text x="1355" y="540" class="small">20 цех</text>
+	<text x="1515" y="486" class="small">16 цех</text>
+	<text x="1425" y="255" class="small" style="font-size: 10px;">ЦМС</text>
+	<text x="1420" y="228" class="small">ХС</text>
+	<text x="900" y="300" class="small">33 цех</text>
+	<text x="1400" y="590" class="small">21 цех</text>
+	<text x="1350" y="600" class="small">30 цех</text>
+	<text x="1080" y="450" class="small">7 цех</text>
+	<text x="1025" y="480" class="small" style="font-size: 12px;">24 цех</text>
+	<text x="1030" y="495" class="small" style="font-size: 11px;">ЦЛИТ</text>
+	<text x="944" y="410" class="small">31 цех</text>
+	<text x="1480" y="205" class="small" style="font-size: 10px;">31 цех</text>
+	<text x="1200" y="460" class="small" style="font-size: 12px;">ЗДУ</text>
+	<text x="955" y="500" class="small">9 цех</text><text x="985" y="615" class="small">8 цех</text>
+	<text x="1068" y="615" class="small">1 цех</text>
+	<text x="1400" y="395" class="small">14 цех</text>
+	<text x="1080" y="525" class="small">31 цех</text>
+	<text x="1462" y="372" class="small">11 цех</text>
+	<text x="1320" y="255" class="small" style="font-size: 12px;">МСЦ 26 цех</text>
+	<text x="1320" y="270" class="small" style="font-size: 10px;">Участок 6 (Цех 6)</text>
+    </g>
+  </g>
+  <!-- problempoints -->
+
+ <!-- <text x="1270" y="520" class="small tooltip" fill="red" data-label="Красный квадрат" style="font-size:12px;" ></text> -->
+<defs>
+	<pattern id="completed_icon" x="0%" y="0%" height="100%" width="100%" viewBox="0 0 128 128">
+		<image x="0%" y="0%" width="128" height="128" xlink:href="imgs/ico/default_point.svg"></image>
+    </pattern>
+
+	<pattern id="default_icon" x="0%" y="0%" height="100%" width="100%" viewBox="0 0 128 128">
+		<image x="0%" y="0%" width="128" height="128" xlink:href="imgs/ico/problem_point2.svg"></image>
+    </pattern>
+	
+	<pattern id="repair_icon" x="0%" y="0%" height="100%" width="100%" viewBox="0 0 128 128">
+		<image x="0%" y="0%" width="128" height="128" xlink:href="imgs/ico/repair_point01.svg"></image>
+    </pattern>
+	
+	<pattern id="waiting_icon" x="0%" y="0%" height="100%" width="100%" viewBox="0 0 128 128">
+		<image x="0%" y="0%" width="128" height="128" xlink:href="imgs/ico/waiting_point01.svg"></image>
+    </pattern>
+	
+</defs>
+
+</svg>
+
+
+</div>
+
+<div id="territoryName" style="position: absolute; bottom: 5px; right: 5px; padding: 15px 20px; /*background: #e9e9e9; border: 1px solid gainsboro; min-width: 500px;*/">Тест</div>
+
+<div id="custom-menu">
+    <a href="#" class="sympathy" id="CustomMenuAddButton" data-coord_x="521" data-coord_y="498">Создать точку</a>
+	<a href="#" class="sympathy" id="CustomMenuCancelButton">Отменить</a>
+    <a href="#" class="sympathy" style="display:none;" id="delete">Удалить</a>
+</div>
+
+				<div id="tooltip" ></div>
+				<!-- /mall -->
+				
+			</div>
+			<!-- /main -->
+
+		</div>
