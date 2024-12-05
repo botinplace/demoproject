@@ -7,7 +7,7 @@
         }
     },
     "require": {
-        "botinplace/tc4u": "main"
+        "botinplace/tc4u": "dev-main"
     },
     "repositories": [
         {
