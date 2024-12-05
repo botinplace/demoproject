@@ -1,4 +1,6 @@
 <?php 
+declare(strict_types=1);
+
 // Тут поменять на 0
  ini_set('display_errors', 1);
  ini_set('display_startup_errors', 1);
@@ -33,5 +35,8 @@
  define('PROJECT_PREFIX','');
  define('BASE_URL', '' );
  
- require ROOT.'Core/application.php';
+ //require ROOT.'Core/application.php';
+
+ require_once __DIR__.'/../vendor/autoload.php';
+ use Core/Application;
  $app = new Application();
