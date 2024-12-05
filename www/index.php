@@ -38,5 +38,5 @@ declare(strict_types=1);
  //require ROOT.'Core/application.php';
 
  require_once __DIR__.'/../vendor/autoload.php';
- use Core/Application;
+ use Core\Application;
  $app = new Application();
