@@ -1,5 +1,5 @@
 <?php
-define('URI_FIXER', '/drp');
+define('URI_FIXER', '/demoproject2');
 define('FIXED_URL', ( !empty(URI_FIXER) ? URI_FIXER.(!empty(BASE_URL) ? '/' : '') : '').BASE_URL );
 
 define('POSTGRESQL_HOST', 'localhost');
