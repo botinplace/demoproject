@@ -115,6 +115,11 @@ class BaseCoreScript {
 
         if (fileField) {
             formData.append('afile', fileField.files[0]);
+			/*
+			fileField.files.forEach((value, key) => {
+				formData.append('afile', value);
+			});
+			*/
             if (fileField.dataset.action) {
                 formData.append(fileField.dataset.action, true);
             }

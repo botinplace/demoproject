@@ -32,4 +32,15 @@ class IndexController extends Controller {
 		
         //echo "Home Page";
     }
+	public function indexPost() {
+		
+		if(isset($_POST['afile'])){
+			var_dump( $_POST['afile'] );
+		}
+		
+		if(isset($_FILES)){
+			var_dump( $_FILES );
+		}
+			
+	}
 }

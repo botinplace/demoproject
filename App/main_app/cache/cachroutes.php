@@ -8,6 +8,10 @@
     [ 'MainApp\\Controllers\\IndexController','index'],'basetemplate' => NULL,'contentfile' => NULL,'middlewares' => 
     [
     ],'needauth' => false,'parentid' => ''],[
+    'id' => 2,'path' => '/','method' => 'POST','controller' => 
+    [ 'MainApp\\Controllers\\IndexController','indexPost'],'basetemplate' => NULL,'contentfile' => NULL,'middlewares' => 
+    [
+    ],'needauth' => false,'parentid' => ''],[
     'id' => 3,'path' => '/дом','method' => 'GET','controller' => 
     [ 'home','index'],'basetemplate' => NULL,'contentfile' => NULL,'middlewares' => 
     [
