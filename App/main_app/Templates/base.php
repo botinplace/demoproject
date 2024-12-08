@@ -37,30 +37,30 @@
 <link rel="stylesheet" href="css/style1.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
 -->
-<link rel="stylesheet" href="<?= FIXED_URL; ?>/css/style.css?v=11" type="text/css">
+<link rel="stylesheet" href="{{SITE_URI}}/css/style.css?v=11" type="text/css">
 
 
 <!-- iOS и Android устройства -->
-<link rel="apple-touch-startup-image" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-180x180.png">
-<link rel="apple-touch-icon" sizes="180x180" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-180x180.png">
-<link rel="apple-touch-icon" sizes="152x152" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="144x144" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="120x120" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="114x114" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="76x76" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="72x72" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="60x60" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="57x57" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-startup-image" href="{{SITE_URI}}/img/ico/favicon/apple-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="{{SITE_URI}}/img/ico/favicon/apple-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="152x152" href="{{SITE_URI}}/img/ico/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="144x144" href="{{SITE_URI}}/img/ico/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="120x120" href="{{SITE_URI}}/img/ico/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="114x114" href="{{SITE_URI}}/img/ico/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="76x76" href="{{SITE_URI}}/img/ico/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="72x72" href="{{SITE_URI}}/img/ico/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="60x60" href="{{SITE_URI}}/img/ico/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="57x57" href="{{SITE_URI}}/img/ico/favicon/apple-icon-57x57.png">
 
 <!-- Android и другие устройства -->
-<link rel="icon" type="image/png" sizes="192x192" href="<?= FIXED_URL; ?>/img/ico/favicon/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="<?= FIXED_URL; ?>/img/ico/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="<?= FIXED_URL; ?>/img/ico/favicon/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="<?= FIXED_URL; ?>/img/ico/favicon/favicon-16x16.png">
-<link rel="icon" href="<?= FIXED_URL; ?>/img/ico/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="{{SITE_URI}}/img/ico/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="{{SITE_URI}}/img/ico/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="{{SITE_URI}}/img/ico/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{SITE_URI}}/img/ico/favicon/favicon-16x16.png">
+<link rel="icon" href="{{SITE_URI}}/img/ico/favicon/favicon.svg">
 
 <!-- Основной favicon для старых браузеров -->
-<link rel="shortcut icon" href="<?= FIXED_URL; ?>/img/ico/favicon/favicon.ico">
+<link rel="shortcut icon" href="{{SITE_URI}}/img/ico/favicon/favicon.ico">
 
 <!--
 <link rel="manifest" href="/img/ico/favicon/manifest.json">
@@ -108,7 +108,7 @@
 <div class="wrapper" >
 	<header>
 		<div class="inner-header">
-			<div class="logo">Logo</div>
+			<div class="logo"><a href="{{SITE_URI}}/">LOGO</a></div>
 			<div class="nav">
     	    <input class="side-menu" type="checkbox" id="side-menu">
             <label class="hamburger" for="side-menu">
@@ -117,10 +117,10 @@
             <nav>
                 <ul itemscope="" itemtype="http://schema.org/SiteNavigationElement">
                     <li itemprop="name"><a itemprop="url" href="#">Что-то</a></li>
-					<li itemprop="name"><a itemprop="url" href="/about">О Проекте</a></li>
+					<li itemprop="name"><a itemprop="url" href="{{SITE_URI}}/about">О Проекте</a></li>
 					<li itemprop="name"><a itemprop="url" href="#categories">Каталог</a></li>
-					<li itemprop="name"><a itemprop="url" href="/tc4u-skeleton/index.html">Вход</a></li>
-					<li itemprop="name"><a itemprop="url" href="/contacts">Контакты</a></li>
+					<li itemprop="name"><a itemprop="url" href="{{SITE_URI}}/дом">Вход</a></li>
+					<li itemprop="name"><a itemprop="url" href="{{SITE_URI}}/user/123">Контакты</a></li>
                 </ul>
             </nav>
 			</div>
@@ -138,7 +138,7 @@
 <input id="is_home" name="is_home" type="hidden" value="1" >
 <input id="site_lng" name="site_lng" type="hidden" value="ru" >
 <div id="info-block" class="info_block"></div>
-<script id="mysctipt" src="js/basecoreClassNew.js?v=4"></script>
+<script id="mysctipt" src="{{SITE_URI}}/js/basecoreClassNew.js?v=4"></script>
 
 <!--[if lt IE 9]>
 	<script src="/js/css3-mediaqueries.min.js"></script>

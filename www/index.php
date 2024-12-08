@@ -14,16 +14,19 @@ declare(strict_types=1);
  }
  header('X-XSS-Protection: 1; mode=block');
  header('Strict-Transport-Security: max-age=7776000');
- /*header('X-Frame-Options: deny');*/
- header('X-Frame-Options: SAMEORIGIN');
+ header('X-Frame-Options: deny');
+ //header('X-Frame-Options: SAMEORIGIN');
  header('Referrer-Policy: strict-origin-when-cross-origin');
  header('X-Content-Type-Options: nosniff');
  header('x-permitted-cross-domain-policies:none');
  header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
  header('Cache-Control: post-check=0, pre-check=0', false);
  header('Pragma: no-cache');	
- header('Access-Control-Allow-Origin: *');
+ //header('Access-Control-Allow-Origin: *');
+ 
  date_default_timezone_set('Europe/Moscow');
+ 
+ // Определение констант
  define( '_SKEY', 1 );
  ignore_user_abort(true);
  define('ROOT', dirname(__DIR__) . DIRECTORY_SEPARATOR);
@@ -35,8 +38,9 @@ declare(strict_types=1);
  define('PROJECT_PREFIX','');
  define('BASE_URL', '' );
  
- //require ROOT.'Core/application.php';
-
+ // Подключение автозагрузчика Composer
  require_once __DIR__.'/../vendor/autoload.php';
+ 
  use Core\Application;
+ 
  $app = new Application();
