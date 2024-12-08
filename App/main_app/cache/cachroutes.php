@@ -19,4 +19,8 @@
     'id' => 5,'path' => '/@user{id}','method' => 'GET','controller' => 
     [ 'test','index'],'basetemplate' => NULL,'contentfile' => NULL,'middlewares' => 
     [
+    ],'needauth' => false,'parentid' => ''],[
+    'id' => 5,'path' => '/k/base','method' => 'GET','controller' => 
+    [ 'test','index'],'basetemplate' => NULL,'contentfile' => NULL,'middlewares' => 
+    [
     ],'needauth' => false,'parentid' => '']];

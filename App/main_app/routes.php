@@ -92,5 +92,24 @@ return [
 		'onlyforguest'=> false,
 		'priority'=>0,
         'layer' => 1  
+    ],
+	[
+        'id' => 5,  
+        'method' => 'GET',
+        'path' => '/k/base',
+		'page_hidden'=>false,
+		'page_title'=>'Заголовок',
+		'page_title_spare'=>'Альтернативный Заголовок',
+		'page_meta_keywords'=> null,
+        'page_meta_description'=> null,
+        'controller' => ['test', 'index'],
+        'middlewares' => [Core\Middlewares\AuthMiddleware::class, 'handleRequest'],
+        'basetemplate' => null,
+		'contentfile'=>null,
+        'parent_id_page' => null,
+		'needauth' => false,
+		'onlyforguest'=> false,
+		'priority'=>0,
+        'layer' => 1  
     ]
 ];

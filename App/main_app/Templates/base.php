@@ -37,30 +37,30 @@
 <link rel="stylesheet" href="css/style1.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
 -->
-<link rel="stylesheet" href="css/style.css?v=11" type="text/css">
+<link rel="stylesheet" href="<?= FIXED_URL; ?>/css/style.css?v=11" type="text/css">
 
 
 <!-- iOS и Android устройства -->
-<link rel="apple-touch-startup-image" href="img/ico/favicon/apple-icon-180x180.png">
-<link rel="apple-touch-icon" sizes="180x180" href="img/ico/favicon/apple-icon-180x180.png">
-<link rel="apple-touch-icon" sizes="152x152" href="img/ico/favicon/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="144x144" href="img/ico/favicon/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="120x120" href="img/ico/favicon/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="114x114" href="img/ico/favicon/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="76x76" href="img/ico/favicon/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="72x72" href="img/ico/favicon/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="60x60" href="img/ico/favicon/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="57x57" href="img/ico/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-startup-image" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="180x180" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="152x152" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="144x144" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="120x120" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="114x114" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="76x76" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="72x72" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="60x60" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="57x57" href="<?= FIXED_URL; ?>/img/ico/favicon/apple-icon-57x57.png">
 
 <!-- Android и другие устройства -->
-<link rel="icon" type="image/png" sizes="192x192" href="img/ico/favicon/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="img/ico/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="img/ico/favicon/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="img/ico/favicon/favicon-16x16.png">
-<link rel="icon" href="img/ico/favicon/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="<?= FIXED_URL; ?>/img/ico/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="<?= FIXED_URL; ?>/img/ico/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="<?= FIXED_URL; ?>/img/ico/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="<?= FIXED_URL; ?>/img/ico/favicon/favicon-16x16.png">
+<link rel="icon" href="<?= FIXED_URL; ?>/img/ico/favicon/favicon.svg">
 
 <!-- Основной favicon для старых браузеров -->
-<link rel="shortcut icon" href="/img/ico/favicon/favicon.ico">
+<link rel="shortcut icon" href="<?= FIXED_URL; ?>/img/ico/favicon/favicon.ico">
 
 <!--
 <link rel="manifest" href="/img/ico/favicon/manifest.json">
