@@ -32,6 +32,8 @@ img, picture, svg, video, canvas{
 
 input, button, textarea, select{
     font: inherit; 
+	background: var(--background-color);
+    color: var(--text-color);
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -52,11 +54,40 @@ body, html{
     scroll-behavior: smooth; 
 }
 
+:root {
+    --background-color: #FFF;
+    --text-color: #000;
+    --header-color: #fbfbfb;
+    --link-color: #000;
+	--header-border-color: #efefef;
+}
+
+/* Тёмная тема */
+@media (prefers-color-scheme: dark) {
+    :root {
+		--background-color: #2e2e2e;
+		--text-color: #dcdcdc;
+		--header-color: #252525;
+		--link-color: #c9c9c9;
+		--header-border-color: #0e0e0e;
+    }
+}
+
+body.dark {
+    --background-color: #2e2e2e;
+    --text-color: #dcdcdc;
+    --header-color: #252525;
+    --link-color: #c9c9c9;
+	--header-border-color: #0e0e0e;
+}
+
 body{
 	display: flex;
     flex-direction: column;
 	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
 	font-family: -apple-system, 'Roboto', system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+	background:var(--background-color);
+	color:var(--text-color);
 }
 
 .wrapper{
@@ -107,8 +138,8 @@ header{
     font-weight: 500;
 	position:sticky;
 	top:0;
-	background:#FFF;
-	border-bottom: 1px solid #efefef;
+	background: var(--header-color);
+	border-bottom: 1px solid var(--header-border-color);
 	z-index:9999;
 }
 footer{
@@ -249,7 +280,7 @@ nav li ul li ul {
     top: 0;
     box-shadow: none;
 }
-nav a{color:black;}
+nav a{color:var(--link-color);}
 
 .side-menu:checked ~ .hamburger .hamburger-line {
     background: transparent;
