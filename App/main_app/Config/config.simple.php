@@ -28,6 +28,6 @@ define('AUTH_PATH','/auth');
 
 // project_db=> Mssql Mysql Postgre SQLi NoDB
 return (object) array(
-	'defaultMiddlewares'=>[ ['Middlware','Method'] ]
+	'defaultMiddlewares'=>[ ['Middlware','Method'] ],
     'project_db' => 'Postgre'
 );
