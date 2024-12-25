@@ -127,7 +127,7 @@ FileETag MTime Size
 #      Header append Content-Encoding gzip
 #      Header append Vary: Accept-Encoding
  </FilesMatch>
-</IfModule>
+
 
 <FilesMatch "\.(css)$">
     Header set Cache-Control "max-age=31536000, public"
@@ -141,3 +141,4 @@ FileETag MTime Size
 Header set Cache-Control "max-age=31536000, public"
 #Header append x-robots-tag "noindex"
 </FilesMatch>
+</IfModule>
